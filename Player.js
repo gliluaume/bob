@@ -6,10 +6,19 @@ class Player {
    }
 
   playTurn(warrior) {
-    if (warrior.feel().isEmpty()) {
-      warrior.walk()
+
+    if ((warrior.health() < 16)) {
+      if (!warrior.feel().isEmpty()) {
+        warrior.walk('backward')
+      } else {
+        warrior.rest();
+      }
     } else {
-      warrior.attack()
+      if (warrior.feel().isEmpty()) {
+        warrior.walk()
+      } else {
+        warrior.attack()
+      }
     }
   }
 }
